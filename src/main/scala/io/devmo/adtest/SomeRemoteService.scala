@@ -25,10 +25,12 @@ trait SomeRemoteServiceSlice {
       (("total", in.map(_._2).sum) :: in).toMap
     override def multiple: Future[Map[String, Int]] =
       Future.sequence(List(
+        "https://www.google.com/",
+        "https://www.facebook.com/",
+        "https://www.bbc.co.uk/",
         "https://www.clearscore.com/",
-        "http://ipv4.download.thinkbroadband.com/5MB.zip",
-        "http://ipv4.download.thinkbroadband.com/10MB.zip",
-        "http://ipv4.download.thinkbroadband.com/20MB.zip"
+        //        "http://ipv4.download.thinkbroadband.com/5MB.zip",
+        "https://clearscore.com/caesium-api/version"
       ).map(resourceSize)).map(summary)
   }
 }
