@@ -1,4 +1,4 @@
-package com.clearscore.adtest
+package io.devmo.adtest
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http

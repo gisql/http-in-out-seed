@@ -1,4 +1,4 @@
-package com.clearscore.adtest
+package io.devmo.adtest
 
 import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
 import akka.stream.scaladsl.Flow
@@ -13,8 +13,14 @@ trait RestEndpoint {
   def routes: Flow[HttpRequest, HttpResponse, Any] = get {
     path("single") {
       complete {
-        timed("single") {
-          someService.resourceSize("foo")
+        timed("GET single") {
+          someService.resourceSize("https://www.clearscore.com/")
+        }
+      }
+    } ~ path("multiple") {
+      complete {
+        timed("GET multiple") {
+          someService.multiple
         }
       }
     }
