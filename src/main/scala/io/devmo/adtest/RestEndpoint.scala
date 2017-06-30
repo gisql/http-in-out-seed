@@ -10,7 +10,11 @@ trait RestEndpoint {
   import akka.http.scaladsl.server.Directives._
   import spray.json.DefaultJsonProtocol._
 
-  def routes: Flow[HttpRequest, HttpResponse, Any] = get {
+  def routes: Flow[HttpRequest, HttpResponse, Any] = logRequestResult("http-logger") {
+    baseRoute
+  }
+
+  private lazy val baseRoute = get {
     path("single") {
       complete {
         timed("GET single") {
